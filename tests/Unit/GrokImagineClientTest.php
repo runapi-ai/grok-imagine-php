@@ -119,4 +119,39 @@ final class GrokImagineClientTest extends TestCase
 
         self::assertSame('/api/v1/grok_imagine/text_to_video', $transport->requests[0]->getUri()->getPath());
     }
+
+    public function testPreviewVideoRequestsUseSharedModelSlug(): void
+    {
+        $transport = new QueueHttpClient([
+            new Response(200, [], '{"id":"task_preview_t2v"}'),
+            new Response(200, [], '{"id":"task_preview_i2v"}'),
+        ]);
+        $client = new GrokImagineClient(new ClientOptions(apiKey: 'k', httpClient: $transport, maxRetries: 0));
+
+        $client->textToVideo->create([
+            'model' => 'grok-imagine-video-1.5-preview',
+            'prompt' => 'A quiet city rain scene',
+            'aspect_ratio' => 'auto',
+            'duration_seconds' => 15,
+            'output_resolution' => '720p',
+        ]);
+        $client->imageToVideo->create([
+            'model' => 'grok-imagine-video-1.5-preview',
+            'source_image_urls' => ['https://cdn.runapi.ai/public/samples/result.png'],
+            'prompt' => 'Animate the still image',
+            'aspect_ratio' => 'auto',
+            'duration_seconds' => 8,
+            'output_resolution' => '720p',
+        ]);
+
+        $textBody = json_decode((string) $transport->requests[0]->getBody(), true, flags: JSON_THROW_ON_ERROR);
+        $imageBody = json_decode((string) $transport->requests[1]->getBody(), true, flags: JSON_THROW_ON_ERROR);
+
+        self::assertSame('grok-imagine-video-1.5-preview', $textBody['model']);
+        self::assertSame('auto', $textBody['aspect_ratio']);
+        self::assertArrayNotHasKey('motion_style', $textBody);
+        self::assertSame('grok-imagine-video-1.5-preview', $imageBody['model']);
+        self::assertSame(['https://cdn.runapi.ai/public/samples/result.png'], $imageBody['source_image_urls']);
+        self::assertArrayNotHasKey('source_task_id', $imageBody);
+    }
 }

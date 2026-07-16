@@ -3,7 +3,7 @@
 [![Packagist](https://img.shields.io/packagist/v/runapi-ai/grok-imagine)](https://packagist.org/packages/runapi-ai/grok-imagine)
 [![License](https://img.shields.io/github/license/runapi-ai/grok-imagine-php)](https://github.com/runapi-ai/grok-imagine-php/blob/main/LICENSE)
 
-The Grok Imagine PHP SDK is the Composer package for Grok Imagine on RunAPI. Use it when your PHP application needs associative-array request bodies, task status lookup, polling helpers, file helpers, and consistent RunAPI errors.
+The Grok Imagine PHP SDK is the Composer package for Grok Imagine on RunAPI. Use it when your PHP application needs associative-array request bodies for image and video generation, task status lookup, polling helpers, file helpers, and consistent RunAPI errors.
 
 ## Install
 
@@ -34,7 +34,7 @@ $result = $client->textToImage->run([
     'prompt' => 'A serene mountain lake at dawn',
 ]);
 
-echo $result->images[0]->url . PHP_EOL;
+echo reset($result->images)->url . PHP_EOL;
 ```
 
 Use `create()` to submit a task and return quickly, `get()` to fetch the latest task state, and `run()` when a script should create and poll until completion. In web request handlers, prefer `create()` plus webhook or later `get()` polling so a worker is not held open.
@@ -48,7 +48,9 @@ All SDK exceptions inherit from `RunApi\Core\Errors\RunApiException`, including 
 - Model page: https://runapi.ai/models/grok-imagine
 - SDK docs: https://runapi.ai/docs#sdk-grok-imagine
 - Product docs: https://runapi.ai/docs#grok-imagine
-- Pricing and rate limits: https://runapi.ai/models/grok-imagine/text-to-video
+- Video 1.5 Preview pricing and rate limits: https://runapi.ai/models/grok-imagine/video-1.5-preview
+- Text-to-video pricing and rate limits: https://runapi.ai/models/grok-imagine/text-to-video
+- Image-to-video pricing and rate limits: https://runapi.ai/models/grok-imagine/image-to-video
 - Full catalog: https://runapi.ai/models
 - GitHub repository: https://github.com/runapi-ai/grok-imagine-php
 - Multi-language SDK repository: https://github.com/runapi-ai/grok-imagine-sdk

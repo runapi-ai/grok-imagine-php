@@ -24,9 +24,14 @@ readonly class ImageToVideo extends TypedConfiguredResource
      *   model: string,
      *   aspect_ratio?: string,
      *   callback_url?: string,
+     *   duration_seconds?: int,
+     *   enable_safety_checker?: bool,
+     *   index?: int,
      *   motion_style?: string,
      *   output_resolution?: string,
-     *   prompt?: string
+     *   prompt?: string,
+     *   source_image_urls?: list<string>,
+     *   source_task_id?: string
      * } $params
      */
     public function create(array $params, ?RequestOptions $options = null): TaskCreateResponse
@@ -52,9 +57,14 @@ readonly class ImageToVideo extends TypedConfiguredResource
      *   model: string,
      *   aspect_ratio?: string,
      *   callback_url?: string,
+     *   duration_seconds?: int,
+     *   enable_safety_checker?: bool,
+     *   index?: int,
      *   motion_style?: string,
      *   output_resolution?: string,
-     *   prompt?: string
+     *   prompt?: string,
+     *   source_image_urls?: list<string>,
+     *   source_task_id?: string
      * } $params
      */
     public function run(array $params, ?RequestOptions $options = null): CompletedVideoTaskResponse

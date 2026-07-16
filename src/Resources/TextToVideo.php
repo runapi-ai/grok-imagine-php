@@ -25,6 +25,8 @@ readonly class TextToVideo extends TypedConfiguredResource
      *   prompt: string,
      *   aspect_ratio?: string,
      *   callback_url?: string,
+     *   duration_seconds?: int,
+     *   enable_safety_checker?: bool,
      *   motion_style?: string,
      *   output_resolution?: string
      * } $params
@@ -53,6 +55,8 @@ readonly class TextToVideo extends TypedConfiguredResource
      *   prompt: string,
      *   aspect_ratio?: string,
      *   callback_url?: string,
+     *   duration_seconds?: int,
+     *   enable_safety_checker?: bool,
      *   motion_style?: string,
      *   output_resolution?: string
      * } $params
