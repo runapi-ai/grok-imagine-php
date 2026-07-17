@@ -13,10 +13,10 @@ final class Types
     public const TEXT_TO_IMAGE_MODELS = ['grok-imagine-text-to-image'];
 
     /** @var list<string> */
-    public const TEXT_TO_VIDEO_MODELS = ['grok-imagine-text-to-video', 'grok-imagine-video-1.5-preview'];
+    public const TEXT_TO_VIDEO_MODELS = ['grok-imagine-text-to-video', 'grok-imagine-video-1.5-fast', 'grok-imagine-video-1.5-preview'];
 
     /** @var list<string> */
-    public const IMAGE_TO_VIDEO_MODELS = ['grok-imagine-image-to-video', 'grok-imagine-video-1.5-preview'];
+    public const IMAGE_TO_VIDEO_MODELS = ['grok-imagine-image-to-video', 'grok-imagine-video-1.5-fast', 'grok-imagine-video-1.5-preview'];
 
     /** @var list<string> */
     public const EDIT_IMAGE_MODELS = ['grok-imagine-edit-image'];

@@ -28,7 +28,8 @@ readonly class TextToVideo extends TypedConfiguredResource
      *   duration_seconds?: int,
      *   enable_safety_checker?: bool,
      *   motion_style?: string,
-     *   output_resolution?: string
+     *   output_resolution?: string,
+     *   reference_image_urls?: list<string>
      * } $params
      */
     public function create(array $params, ?RequestOptions $options = null): TaskCreateResponse
@@ -58,7 +59,8 @@ readonly class TextToVideo extends TypedConfiguredResource
      *   duration_seconds?: int,
      *   enable_safety_checker?: bool,
      *   motion_style?: string,
-     *   output_resolution?: string
+     *   output_resolution?: string,
+     *   reference_image_urls?: list<string>
      * } $params
      */
     public function run(array $params, ?RequestOptions $options = null): CompletedVideoTaskResponse

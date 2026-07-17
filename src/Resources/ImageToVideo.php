@@ -30,6 +30,7 @@ readonly class ImageToVideo extends TypedConfiguredResource
      *   motion_style?: string,
      *   output_resolution?: string,
      *   prompt?: string,
+     *   reference_image_urls?: list<string>,
      *   source_image_urls?: list<string>,
      *   source_task_id?: string
      * } $params
@@ -63,6 +64,7 @@ readonly class ImageToVideo extends TypedConfiguredResource
      *   motion_style?: string,
      *   output_resolution?: string,
      *   prompt?: string,
+     *   reference_image_urls?: list<string>,
      *   source_image_urls?: list<string>,
      *   source_task_id?: string
      * } $params
