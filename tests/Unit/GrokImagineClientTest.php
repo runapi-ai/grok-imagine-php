@@ -137,7 +137,7 @@ final class GrokImagineClientTest extends TestCase
         ]);
         $client->imageToVideo->create([
             'model' => 'grok-imagine-video-1.5-preview',
-            'source_image_urls' => ['https://cdn.runapi.ai/public/samples/result.png'],
+            'source_image_url' => 'https://cdn.runapi.ai/public/samples/result.png',
             'prompt' => 'Animate the still image',
             'aspect_ratio' => 'auto',
             'duration_seconds' => 8,
@@ -151,7 +151,7 @@ final class GrokImagineClientTest extends TestCase
         self::assertSame('auto', $textBody['aspect_ratio']);
         self::assertArrayNotHasKey('motion_style', $textBody);
         self::assertSame('grok-imagine-video-1.5-preview', $imageBody['model']);
-        self::assertSame(['https://cdn.runapi.ai/public/samples/result.png'], $imageBody['source_image_urls']);
+        self::assertSame('https://cdn.runapi.ai/public/samples/result.png', $imageBody['source_image_url']);
         self::assertArrayNotHasKey('source_task_id', $imageBody);
     }
 
@@ -173,7 +173,7 @@ final class GrokImagineClientTest extends TestCase
         ]);
         $client->imageToVideo->create([
             'model' => 'grok-imagine-video-1.5-fast',
-            'source_image_urls' => ['https://cdn.runapi.ai/public/samples/result.png'],
+            'source_image_url' => 'https://cdn.runapi.ai/public/samples/result.png',
             'reference_image_urls' => ['https://cdn.runapi.ai/public/samples/reference.png'],
             'prompt' => 'Animate the still image',
             'aspect_ratio' => '3:2',
@@ -188,7 +188,7 @@ final class GrokImagineClientTest extends TestCase
         self::assertSame(['https://cdn.runapi.ai/public/samples/result.png'], $textBody['reference_image_urls']);
         self::assertSame('720p', $textBody['output_resolution']);
         self::assertSame('grok-imagine-video-1.5-fast', $imageBody['model']);
-        self::assertSame(['https://cdn.runapi.ai/public/samples/result.png'], $imageBody['source_image_urls']);
+        self::assertSame('https://cdn.runapi.ai/public/samples/result.png', $imageBody['source_image_url']);
         self::assertSame(['https://cdn.runapi.ai/public/samples/reference.png'], $imageBody['reference_image_urls']);
         self::assertArrayNotHasKey('source_task_id', $imageBody);
     }

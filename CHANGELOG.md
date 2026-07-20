@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.1.3](https://github.com/runapi-ai/grok-imagine-php/releases/tag/v0.1.3) - 2026-07-20
+
+### Breaking
+- Replace Grok Imagine image-to-video `source_image_urls` with scalar `source_image_url`.
+  Migration: Pass the source image as `source_image_url`; keep `reference_image_urls` only for optional Fast reference images.
+
+
 ## [v0.1.2](https://github.com/runapi-ai/grok-imagine-php/releases/tag/v0.1.2) - 2026-07-17
 
 ### Changed
